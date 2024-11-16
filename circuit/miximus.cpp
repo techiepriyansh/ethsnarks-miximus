@@ -38,7 +38,7 @@ using ethsnarks::ppT;
 using ethsnarks::FieldT;
 using ethsnarks::ProtoboardT;
 
-const size_t MIXIMUS_TREE_DEPTH = 29;
+const size_t MIXIMUS_TREE_DEPTH = 7;
 
 
 namespace ethsnarks {
