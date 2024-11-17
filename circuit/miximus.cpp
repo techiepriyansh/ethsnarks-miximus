@@ -244,6 +244,27 @@ char* miximus_nullifier( const char *in_secret, const char *in_leaf_index )
     return result_str;
 }
 
+char* miximus_hash( const char *in_secret )
+{
+    ppT::init_public_params();
+
+    const FieldT arg_secret(in_secret);
+    const FieldT arg_result(ethsnarks::mimc_hash({arg_secret}));
+
+    // Convert result to mpz
+    const auto result_bigint = arg_result.as_bigint();
+    mpz_t result_mpz;
+    mpz_init(result_mpz);
+    result_bigint.to_mpz(result_mpz);
+
+    // Convert to string
+    char *result_str = mpz_get_str(nullptr, 10, result_mpz);
+    assert( result_str != nullptr );
+    mpz_clear(result_mpz);
+
+    return result_str;
+}
+
 
 static char *miximus_prove_internal(
     const char *pk_file,

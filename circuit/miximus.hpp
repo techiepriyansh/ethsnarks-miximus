@@ -58,6 +58,8 @@ bool miximus_verify( const char *vk_json, const char *proof_json );
 
 char* miximus_nullifier( const char *in_secret, const char *in_leaf_index );
 
+char* miximus_hash( const char *in_secret );
+
 size_t miximus_tree_depth( void );
 
 #ifdef __cplusplus
